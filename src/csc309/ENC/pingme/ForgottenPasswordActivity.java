@@ -3,7 +3,6 @@ package csc309.ENC.pingme;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -28,15 +27,8 @@ public class ForgottenPasswordActivity extends Activity {
 
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.forgotten_password, menu);
-		return true;
-	}
-	
 	public void sendEmail(View view) {
-		EditText emailText = (EditText) findViewById(R.id.forgot_password_email);
+		EditText emailText = (EditText) findViewById(R.id.forgotpassword_email);
 	    String email = emailText.getText().toString();
 	    TextView message = (TextView) findViewById(R.id.forgot_password_text);
 	    
