@@ -2,6 +2,7 @@ package csc309.ENC.pingme;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -40,6 +41,14 @@ public class LoginActivity extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	/**
+	 * Navigate to forgotten password activity
+	 */
+	public void passwordForgot(View view) {
+		Intent intent = new Intent(this, ForgottenPasswordActivity.class);
+		startActivity(intent);
 	}
 
 	/**
