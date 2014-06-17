@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Ping Me!</string>
+    <string name="username_hint">Username</string>
+    <string name="password_hint">Password</string>
+    <string name="button_login">Login</string>
+    <string name="button_signup">Sign Up</string>
+    <string name="forgot_password">Forgot your password?</string>
+    
+    <!-- Extras -->
+    <string name="logo_desc">Main logo image</string>
+    <string name="action_settings">Settings</string>
+
+</resources>
