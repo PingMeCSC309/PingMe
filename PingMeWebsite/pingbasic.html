@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+<link rel="stylesheet" href="css/metro-bootstrap.css">
+<script src="js/jquery/jquery.min.js"></script>
+<script src="js/jquery/jquery.widget.min.js"></script>
+<script src="js/jquery/jquery.mousewheel.js"></script>
+<script src="js/metro-dropdown.js"></script>
+<script src="min/metro.min.js"></script>
+
+    <style>
+      #map-canvas {
+        height: 100%;
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script>
+
+function initialize() {
+go();}
+
+function go(x, y) {
+
+
+   if(typeof(x)==='undefined') x = 43.66382;
+   if(typeof(y)==='undefined') y = -79.395365;
+
+  var myLatlng1 = new google.maps.LatLng(43.659738,-79.397939);
+  var myLatlng2 = new google.maps.LatLng(43.661927,-79.391266);
+  var myLatlng3 = new google.maps.LatLng(43.66722,-79.397467);
+  var myLatlng4 = new google.maps.LatLng(33.962013,-118.293021);
+  var myLatlngc = new google.maps.LatLng(x,y);
+  var mapOptions = {
+    zoom: 15,
+    center: myLatlngc
+  }
+  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+ var marker1 = new google.maps.Marker({
+      position: myLatlng1,
+      map: map,
+      title: 'Edward Kao, 10 mins'
+  });
+
+var marker2 = new google.maps.Marker({
+      position: myLatlng2,
+      map: map,
+      title: 'Nicholas Pham, 1 hour'
+  });
+
+var marker3 = new google.maps.Marker({
+      position: myLatlng3,
+      map: map,
+      title: 'Cristian Nanan, 2 hours'
+  });
+
+var marker4 = new google.maps.Marker({
+      position: myLatlng4,
+      map: map,
+      title: 'Jackie Chan, 1 minute'
+  });
+
+
+  }
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+
+</head>
+
+<body class="metro">
+
+
+
+<div class="grid" style="position:absolute; width:90%; height:90%; top:50%; left:50%; transform: translate(-50%, -50%);">
+<div class="row" style="height:80%;">
+      	   <div class="span6">    <nav class="sidebar light">
+    <ul>
+    <li class="title">Welcome, Mashiyat</li>
+    <li>
+    <a class="dropdown-toggle" href="#"><i class="icon-tree-view"></i>Friends</a>
+    <ul class="dropdown-menu" data-role="dropdown">
+    <li><a onclick="go(43.659738,-79.397939)" class="friend">Edward Kao</a></li>
+    <li><a onclick="go(43.661927,-79.391266)" class="friend">Nicholas Pham</a></li>
+    <li><a onclick="go(43.66722,-79.397467)" class="friend">Cristian Nanan</a></li>
+    <li><a onclick="go(33.962013,-118.293021)" class="friend">Jackie Chan</a></li>
+    </ul>
+    </li>
+    <li class="title">Account</li>
+    <li class="disabled"><a href="#">Settings</a></li>
+    <li class="stick bg-red"><a href="home.html">Sign Out</a></li>
+    </ul>
+    </nav></div>
+
+
+		 <div class ="span9" id="map-canvas"></div>
+
+</div></div>
+</body>
+
+<script>
+
+$('.dropdown-menu a.friend').click(function(e) {
+    e.stopPropagation();
+});
+</script>
+
+</html>
