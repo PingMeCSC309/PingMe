@@ -9,18 +9,21 @@ Let your friends know you current location, view others' previous locations, set
 
 Developers
 -----------
-teamENC
---------
-Edward Kao
-Nicholas Pham
-Cristian Nanan
+- Edward Kao
+- Nicholas Pham
+- Cristian Nanan
 
 Mobile App
 -----------
 Minimum android version: 4.0 (Ice Cream Sandwich API 14)
+
 Master/detail flow layout + Navigation Drawer
 
 Website
 --------
 
 The website contains general information about the service and developers, as well as providing some limited functionality. Download the 'PingMeWebsite' folder and start in 'home.html'
+
+Dedicated to Mashiyat Ahmed Shah.
+
+Because you da best.
