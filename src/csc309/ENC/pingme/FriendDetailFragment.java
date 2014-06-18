@@ -55,7 +55,7 @@ public class FriendDetailFragment extends Fragment {
 		// Show the dummy content as text in a TextView.
 		if (mItem != null) {
 			((TextView) rootView.findViewById(R.id.friend_detail))
-					.setText(mItem.content);
+					.setText(mItem.name);
 		}
 
 		return rootView;

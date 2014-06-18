@@ -1,21 +1,30 @@
 package csc309.ENC.pingme;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 
-public class ForgottenPasswordActivity extends Activity {
+public class SignUpActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_forgotten_password);
+		setContentView(R.layout.activity_sign_up);
 		// Show the Up button in the action bar.
 		setupActionBar();
+		
+		// Get already typed user info and insert in fields
+		Intent intent = getIntent();
+		String username = intent.getStringExtra(LoginActivity.SIGNUP_USRN);
+		String pw = intent.getStringExtra(LoginActivity.SIGNUP_PW);
+		
+		EditText userField = (EditText) findViewById(R.id.signup_username);
+		EditText pwField = (EditText) findViewById(R.id.signup_password);
+		userField.setText(username);
+		pwField.setText(pw);			
 	}
 
 	/**
@@ -25,17 +34,6 @@ public class ForgottenPasswordActivity extends Activity {
 
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 
-	}
-
-	public void sendEmail(View view) {
-		EditText emailText = (EditText) findViewById(R.id.forgotpassword_email);
-	    String email = emailText.getText().toString();
-	    TextView message = (TextView) findViewById(R.id.forgot_password_text);
-	    
-	    // Request password reset here
-	    
-	    CharSequence newMessage = getResources().getText(R.string.email_submitted); 
-	    message.setText(newMessage + " " + email);
 	}
 
 	@Override

@@ -38,6 +38,18 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="csc309.ENC.pingme.LoginActivity" />
         </activity>
+
+		<!-- Sign up screen -->
+        <activity
+            android:name="csc309.ENC.pingme.SignUpActivity"
+            android:label="@string/title_activity_sign_up"
+            android:parentActivityName="csc309.ENC.pingme.LoginActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="csc309.ENC.pingme.LoginActivity" />
+        </activity>        
+        
+        <!-- Friend/Map screens -->
         <activity
             android:name="csc309.ENC.pingme.FriendListActivity"
             android:label="@string/title_friend_list" >
@@ -50,6 +62,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".FriendListActivity" />
         </activity>
+        
     </application>
 
 </manifest>

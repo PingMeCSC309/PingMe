@@ -8,7 +8,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="csc309.ENC.pingme.LoginActivity$PlaceholderFragment" >
 
-    <!-- Big logo display -->
+    <!-- logo display -->
     <ImageView android:id="@+id/logo_splash"
         android:adjustViewBounds="true"
         android:layout_width="wrap_content"
@@ -50,6 +50,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/button_login"
+        android:onClick="signUp"
         android:text="@string/button_signup" />
     
     <!-- Forgotten password text clickable -->
