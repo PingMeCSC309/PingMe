@@ -39,6 +39,14 @@ public class LoginActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	
+	/** Navigate to friends list activity
+	 * 
+	 */
+	public void logIn(View view) {
+		Intent intent = new Intent(this, FriendListActivity.class);
+		startActivity(intent);
+	}
+	
 	/**
 	 * Navigate to Sign up activity
 	 */

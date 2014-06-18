@@ -42,8 +42,10 @@
 		<!-- Sign up screen -->
         <activity
             android:name="csc309.ENC.pingme.SignUpActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/title_activity_sign_up"
-            android:parentActivityName="csc309.ENC.pingme.LoginActivity" >
+            android:parentActivityName="csc309.ENC.pingme.LoginActivity" 
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="csc309.ENC.pingme.LoginActivity" />
@@ -62,7 +64,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".FriendListActivity" />
         </activity>
-        
+      
     </application>
 
 </manifest>
