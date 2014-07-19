@@ -1,15 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- Titles/Labels -->
     <string name="app_name">Ping Me!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_forgotten_password">Password Reset</string>
+   	<string name="title_friend_list">Friends</string>
+    <string name="title_friend_detail">Friend Detail</string>
+    <string name="title_activity_sign_up">Sign Up</string>
+
+    <!-- Widget texts -->
     <string name="username_hint">Username</string>
     <string name="password_hint">Password</string>
-    <string name="button_login">Login</string>
+    <string name="password_retype_hint">Re-type password</string>
+    <string name="email_hint">Email</string>
+    <string name="first_name_hint">First name</string>
+    <string name="last_name_hint">Last name</string>
+    <string name="button_login">Start Pinging!</string>
     <string name="button_signup">Sign Up</string>
+    <string name="button_submit">Submit</string>
+
+    <!-- General texts -->
     <string name="forgot_password">Forgot your password?</string>
+    <string name="reset_password_text">That\'s alright, give us your email and we\'ll send you a new one.</string>
+    <string name="email_submitted">Your new password has been sent to</string>
+    <string name="signup_encourage">Let\'s get Pinging!</string>
     
     <!-- Extras -->
-    <string name="logo_desc">Main logo image</string>
-    <string name="action_settings">Settings</string>
+    <string name="logo_desc">Logo image</string>
+
+    <string name="hello_world">Hello world!</string>
 
 </resources>

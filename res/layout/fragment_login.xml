@@ -6,9 +6,9 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="csc309.ENC.pingme.LoginActivity$PlaceholderFragment" >
+    tools:context="csc309.ENC.pingme.LoginActivity$LoginFragment" >
 
-    <!-- Big logo display -->
+    <!-- logo display -->
     <ImageView android:id="@+id/logo_splash"
         android:adjustViewBounds="true"
         android:layout_width="wrap_content"
@@ -43,6 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/login_password" 
         android:paddingTop="8dp"
+        android:onClick="logIn"
         android:text="@string/button_login" />
     
     <!-- Sign up button -->
@@ -50,6 +51,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/button_login"
+        android:onClick="signUp"
         android:text="@string/button_signup" />
     
     <!-- Forgotten password text clickable -->
@@ -59,7 +61,9 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"	
         android:paddingBottom="4dp"
+        android:singleLine="true"
         android:clickable="true"
+        android:onClick="passwordForgot"
         android:text="@string/forgot_password" />
     
 </RelativeLayout>

@@ -1,0 +1,68 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingBottom="96dp"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context=".SignUpActivity" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:textColor="@android:color/primary_text_dark"
+        android:textSize="18sp"
+        android:text="@string/signup_encourage" />
+    
+    <!-- Username -->
+    <EditText android:id="@+id/signup_username"
+        android:layout_width="fill_parent" 
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:hint="@string/username_hint" />
+    
+    <!-- Password -->
+    <EditText android:id="@+id/signup_password"
+        android:layout_width="fill_parent" 
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:hint="@string/password_hint" />
+    
+    <!-- Password re-type -->
+	<EditText 
+        android:layout_width="fill_parent" 
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:hint="@string/password_retype_hint" />
+
+	<!-- First name -->
+	<EditText 
+        android:layout_width="fill_parent" 
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:hint="@string/first_name_hint" />
+	
+	<!-- Last name -->
+	<EditText 
+        android:layout_width="fill_parent" 
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:hint="@string/last_name_hint" />
+	
+	<!-- Email -->
+	<EditText 
+        android:layout_width="fill_parent" 
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:hint="@string/email_hint" />
+	
+	<Button
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_gravity="end"
+	    android:text="@string/button_signup" />
+	
+</LinearLayout>
