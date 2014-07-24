@@ -61,6 +61,40 @@ app.post('/log', function(req, res){
 
 app.get('/', function(req, res){
 	res.sendfile('html/home.html');
+
+/*After logging in, use the user's username from the database in order to perform SQL queries / functionalities.
+1. Check notifications if any by using the sql query
+
+Select *
+From globalNotifications
+Where recipientname = username 
+
+When done, delete the row using the primary key notificationid to avoid long computations.
+
+1a) If the type = 1, the user has a new friend request and requires the user accept friend or block. 
+Notify the user that sendername from the sql query wants to become friends with user and requires a response.
+If accept, update the friendRelations table
+
+UPDATE friendRelations
+SET inviteResponse = 1
+WHERE username1 = senderusername and username2 = recipientusername
+
+2. Adding friend
+
+Take the string friend provided by the user in the textbox and find it in the database. If it exists, add the relation to the table friendRelations
+INSERT VALUES (username,friend,0) INTO friendRelations
+
+Take the string friend provided by t
+he user in the textbox and add a notification in the table globalNotifications so the recipient will get notified of the
+friend request
+INSERT VALUES (username,friend,1); */
+
+
+
+
+
+
+
 });
 
 app.listen(3000);
