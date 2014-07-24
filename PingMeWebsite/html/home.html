@@ -13,10 +13,10 @@
 	<img src="logometrotemporary.png">
     <form method="post" action="/log">
         <label>Username:</label>
-        <input type="text" name="username"><br>
+        <input id="user" type="text" name="username"><br>
         <label>Password:</label>
         <input type="password" name="password"><br><br>
-        <input type="submit" value="Sign in">
+        <input id="gogo" type="submit" value="Sign in" onclick="signIn()">
     </form>
 
 
@@ -37,4 +37,18 @@
 </div>
 </center>
 </body>
+
+<script>
+if(window.location == "http://localhost:3000/reg")
+	{
+	document.getElementById("gogo").value="Thanks, please sign in";
+	}
+</script>
+
+<script>
+function signIn(){
+	var user = document.getElementById("user").value;
+	sessionStorage.setItem("user", user);
+	}
+</script>
 </html>

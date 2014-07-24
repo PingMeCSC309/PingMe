@@ -19,6 +19,9 @@ app.use(express.static(__dirname + '/img'));
 
 app.post('/reg', function(req, res){
 	console.log(req.body);
+
+	if (req.body.password.trim() == "" || req.body.username.trim() == "" || req.body.email.trim() == ""){
+		req.body.password = null;}
 	
 	connection.query('INSERT INTO users'+
 	' SET username = ?'+
@@ -27,14 +30,21 @@ app.post('/reg', function(req, res){
 	[req.body.username,
 	req.body.password,
 	req.body.email], function (err, rows, fields) {
-		if (err) throw err;
-		console.log('User inserted');
+		if (err){
+			console.log(err);
+			res.sendfile('html/regerr.html');
+		}
+		else{
+			console.log('User inserted');
+			res.sendfile('html/home.html');
+		}
 	});	
-	res.sendfile('html/home.html');
 });
 
 app.post('/log', function(req, res){
 	console.log(req.body);
+
+	var name = req.body.username;
 
 	var user = 'SELECT * FROM users WHERE username="'+req.body.username+'" AND password="'+req.body.password+'"';
 

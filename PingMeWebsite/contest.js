@@ -1,10 +1,10 @@
 var mysql = require('mysql');
 
 var connection = mysql.createConnection({
-host		: 'db4free.net',
-user		: 'pingme',
+host		: 'mysql.hostinger.co.uk',
+user		: 'u928316282_me',
 password	: 'csc309enc',
-database	: 'pingme'
+database	: 'u928316282_ping'
 });
 connection.connect();
 connection.query('CREATE TABLE users'+

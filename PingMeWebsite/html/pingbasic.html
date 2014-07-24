@@ -71,13 +71,11 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 <body class="metro">
 
-
-
 <div class="grid" style="position:absolute; width:90%; height:90%; top:50%; left:50%; transform: translate(-50%, -50%);">
 <div class="row" style="height:80%;">
       	   <div class="span6">    <nav class="sidebar light">
     <ul>
-    <li class="title">Welcome, Mashiyat</li>
+    <li class="title">Welcome, <fake id="user"></fake></li>
     <li>
     <a class="dropdown-toggle" href="#"><i class="icon-tree-view"></i>Friends</a>
     <ul class="dropdown-menu" data-role="dropdown">
@@ -104,6 +102,11 @@ google.maps.event.addDomListener(window, 'load', initialize);
 $('.dropdown-menu a.friend').click(function(e) {
     e.stopPropagation();
 });
+</script>
+
+<script>
+var user = sessionStorage.getItem("user");
+document.getElementById("user").innerHTML=user;
 </script>
 
 </html>
