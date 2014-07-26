@@ -20,8 +20,8 @@ console.log('Table ready');
 });
 
 connection.query('CREATE TABLE friendRelations'+
-'(userid1 INT(25),'+
-'userid2 INT(25)'+
+'(username1 VAR(65),'+
+'username2 VAR(65)'+
 'inviteResponse INT(25));',function(err,rows,fields){
 
 if (err) throw err;
@@ -30,18 +30,13 @@ console.log('Table ready');
 
 connection.query('CREATE TABLE globalNotifications'+
 '(notificationid INT(25) AUTO_INCREMENT,'+
-'recipientid INT(25),'+
-'senderid INT(25),'+
-'type INT(255));',function(err,rows,fields){
+'recipientusername VAR(65),'+
+'senderusername VAR(65),'+
+'type INT(25));',function(err,rows,fields){
 
 if (err) throw err;
 console.log('Table ready');
 });
-
-
-
-
-
 
 connection.end();
 
