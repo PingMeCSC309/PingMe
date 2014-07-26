@@ -63,4 +63,96 @@ app.get('/', function(req, res){
 	res.sendfile('html/home.html');
 });
 
+app.post('/getFriend', function(req, res) {
+	console.log(req.body);
+
+	var check = 'SELECT * FROM users WHERE username="'+req.body.friend+'"';
+
+connection.query(check, function(err, rows, fields) {
+		if (err) throw err;
+		if(!rows[0]){
+			console.log("User not found");}
+		else{
+			console.log("Reqested user found");
+
+connection.query('INSERT INTO friendRelations'+
+	' SET username1 = ?'+
+	', username2 = ?'+
+	', inviteResponse = ?',
+	[req.body.user,
+	req.body.friend,
+	0], function (err, rows, fields) {
+		if (err){
+			console.log(err);
+		}
+		else{
+			console.log('Friend request inserted');
+		}
+	});
+
+connection.query('INSERT INTO globalNotifications'+
+	' SET recipientusername = ?'+
+	', senderusername = ?'+
+	', type = ?',
+	[req.body.friend,
+	req.body.user,
+	1], function (err, rows, fields) {
+		if (err){
+			console.log(err);
+		}
+		else{
+			console.log('Notification inserted');
+		}
+	});	
+
+
+		}
+	});
+
+	
+});
+
+app.post('/getNotif', function(req, res){
+	console.log("Checking "+req.body.user+"'s notifications");
+
+	var name = req.body.user;
+
+	var user = 'SELECT * FROM globalNotifications WHERE recipientusername="'+req.body.user+'"';
+
+	connection.query(user, function(err, rows, fields) {
+		if (err) throw err;
+		if(!rows[0]){
+			console.log("No notifications");}
+		else{
+			console.log("Notifications found");
+			console.log(rows);
+			app.get('/Notif', function(req, res){
+  res.send(rows);
+		});}
+	});
+}); 
+
+app.post('/getPing', function(req, res){
+	console.log(req.body);
+
+connection.query('INSERT INTO pings'+
+	' SET username = ?'+
+	', latit = ?'+
+	', longit = ?'+
+	', time = ?',
+	[req.body.user,
+	req.body.latit,
+	req.body.longit,
+	req.body.time], function (err, rows, fields) {
+		if (err){
+			console.log(err);
+		}
+		else{
+			console.log('Ping inserted');
+		}
+	});	
+
+
+}); 
+
 app.listen(3000);

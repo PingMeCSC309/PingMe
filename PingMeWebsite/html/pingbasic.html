@@ -5,7 +5,9 @@
 <script src="js/jquery/jquery.min.js"></script>
 <script src="js/jquery/jquery.widget.min.js"></script>
 <script src="js/jquery/jquery.mousewheel.js"></script>
+<script src="js/jquery/jquery.timeago.js"></script>
 <script src="js/metro-dropdown.js"></script>
+<script src="js/metro-notify.js"></script>
 <script src="min/metro.min.js"></script>
 
     <style>
@@ -16,8 +18,7 @@
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
     <script>
 
-function initialize() {
-go();}
+var map;
 
 function go(x, y) {
 
@@ -34,7 +35,7 @@ function go(x, y) {
     zoom: 15,
     center: myLatlngc
   }
-  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
  var marker1 = new google.maps.Marker({
       position: myLatlng1,
@@ -62,14 +63,11 @@ var marker4 = new google.maps.Marker({
 
 
   }
-
-google.maps.event.addDomListener(window, 'load', initialize);
-
     </script>
 
 </head>
 
-<body class="metro">
+<body class="metro" onLoad="go()">
 
 <div class="grid" style="position:absolute; width:90%; height:90%; top:50%; left:50%; transform: translate(-50%, -50%);">
 <div class="row" style="height:80%;">
@@ -86,7 +84,8 @@ google.maps.event.addDomListener(window, 'load', initialize);
     </ul>
     </li>
     <li class="title">Account</li>
-    <li><a onclick="addFriendBox()" class="friend">Add Friends</a></li>
+    <li class="stick bg-green"><a onclick="makePing()">Ping!</a></li>
+    <li><a onclick="addFriendBox()">Add Friends</a></li>
     <li class="disabled"><a href="#">Settings</a></li>
     <li class="stick bg-red"><a href="home.html">Sign Out</a></li>
     </ul>
@@ -97,14 +96,13 @@ google.maps.event.addDomListener(window, 'load', initialize);
                                             <button type="button" class="btn-clear" tabindex="-1"></button>
                                         </div></div>
 
-
-		 <div class ="span9" id="map-canvas"></div>
+<div class="span1"></div>
+		 <div id="map-canvas"></div>
 
 </div></div>
 </body>
 
 <script>
-
 $('.dropdown-menu a.friend').click(function(e) {
     e.stopPropagation();
 });
@@ -118,6 +116,76 @@ document.getElementById("user").innerHTML=user;
 <script>
 function addFriendBox(){
 document.getElementById("addfriend").style.display="block";
+}
+</script>
+
+<script>
+$("#addfriend").keyup(function(event){
+    if(event.keyCode == 13){
+        $.ajax( {
+    url: '/getFriend',
+    data: { friend: document.getElementById("addfriend").value, user: user },
+    type: 'POST',
+});
+	document.getElementById("addfriend").value="";
+	document.getElementById("addfriend").placeholder="Request sent";
+    } 
+});
+</script>
+
+<script>
+$.ajax({
+  url: '/getNotif',
+  data: { user: user },
+  type: 'POST',
+});
+</script>
+<script>
+$.get("http://localhost:3000/notif", notifier, 'text');
+
+function notifier(my_var){
+var requests = JSON.parse("[" + my_var + "]");
+for (x = 0; x < requests[0].length; x++) {
+    $.Notify({
+content: requests[0][x].senderusername+" wants to be friends | <a onclick=addFriend(this.parentNode)>ACCEPT</a>",
+timeout: "null"
+		});
+	}
+}
+</script>
+
+<script>
+function makePing() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        alert("Geolocation is not supported by this browser.");
+    }
+}
+
+function showPosition(positionxy) {
+	var Latlngnew = new google.maps.LatLng(positionxy.coords.latitude, positionxy.coords.longitude);
+	map.setCenter(Latlngnew);
+	var marker = new google.maps.Marker({
+        position: Latlngnew, 
+        map: map,
+	   animation: google.maps.Animation.DROP,
+	   title: "You just pinged!"
+    });
+
+$.ajax({
+  url: '/getPing',
+  data: { user: user, latit: positionxy.coords.latitude, longit: positionxy.coords.longitude, time: Date().toString() },
+  type: 'POST',
+});
+
+}
+</script>
+
+<script>
+function addFriend(elem, thefriend){
+	alert("Not yet implemented =/")
+	elem.parentNode.style.display="none";
 }
 </script>
 
