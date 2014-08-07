@@ -108,8 +108,7 @@ connection.query('INSERT INTO globalNotifications'+
 
 		}
 	});
-
-	
+res.end();
 });
 
 app.post('/getNotif', function(req, res){
@@ -126,9 +125,8 @@ app.post('/getNotif', function(req, res){
 		else{
 			console.log("Notifications found");
 			console.log(rows);
-			app.get('/Notif', function(req, res){
-  res.send(rows);
-		});}
+			res.end(JSON.stringify(rows));
+			}
 	});
 }); 
 
@@ -151,8 +149,7 @@ connection.query('INSERT INTO pings'+
 			console.log('Ping inserted');
 		}
 	});	
-
-
+res.end();
 }); 
 
 /*After logging in, use the user's username from the database in order to perform SQL queries / functionalities.

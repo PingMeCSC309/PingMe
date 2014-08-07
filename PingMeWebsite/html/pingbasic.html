@@ -138,16 +138,18 @@ $.ajax({
   url: '/getNotif',
   data: { user: user },
   type: 'POST',
+  success: function(data) {notifier(data);}
 });
 </script>
 <script>
-$.get("http://localhost:3000/notif", notifier, 'text');
+
 
 function notifier(my_var){
-var requests = JSON.parse("[" + my_var + "]");
+requests = JSON.parse("[" + my_var + "]");
 for (x = 0; x < requests[0].length; x++) {
     $.Notify({
-content: requests[0][x].senderusername+" wants to be friends | <a onclick=addFriend(this.parentNode)>ACCEPT</a>",
+caption: requests[0][x].senderusername,
+content: "wants to be friends | <a onclick='addFriend(this.parentNode)'>ACCEPT</a>",
 timeout: "null"
 		});
 	}
@@ -184,7 +186,7 @@ $.ajax({
 
 <script>
 function addFriend(elem, thefriend){
-	alert("Not yet implemented =/")
+	alert(elem.parentNode.getElementsByClassName("caption")[0].innerHTML)
 	elem.parentNode.style.display="none";
 }
 </script>
